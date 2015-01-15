@@ -1,0 +1,73 @@
+@(offer: Form[views.formdata.OfferFormData])
+
+@import bootstrap3.text
+@import bootstrap3.datepicker
+
+<fieldset>
+  <!-- Header -->
+  <div id="legend">
+    <legend>Angebot erstellen</legend>
+  </div>
+
+   <!-- Start Point -->
+  @text(offer("startPoint"),
+        label = "Start",
+        placeholder = "z.B. Karlsruhe",
+        help = "Bitte geben sie einen Startpunkt ein")
+
+    <!-- Target Point -->
+    @text(offer("targetPoint"),
+    label = "Ziel",
+    placeholder = "z.B. Berlin",
+    help = "Bitte geben sie ein Ziel ein")
+
+
+    <!-- Start date -->
+  @datepicker("dpoffer",
+  offer("date"),
+  "Datum")
+
+
+    <!-- Start Time -->
+    @text(offer("time"),
+    label = "Abfahrtszeit",
+    placeholder = "z.B. 09:35",
+    help = "Bitte geben sie eine Zeit ein")
+
+  <div class="well">
+    <div id="datetimepicker4" class="input-append">
+      <input data-format="yyyy-MM-dd" type="text"></input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+      </span>
+    </div>
+  </div>
+  <script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+  </script>
+  <script type="text/javascript"
+  src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+  </script>
+  <script type="text/javascript"
+  src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+  </script>
+  <script type="text/javascript"
+  src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+  </script>
+  <script type="text/javascript">
+  $(function() {
+  $('#datetimepicker4').datetimepicker({
+  pickTime: false
+  });
+  });
+  </script>
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id="submit" type="submit" value="Submit" class="btn btn-primary">Einstellen</button>
+      <button id="cancel" class="btn cancel">Abbrechen</button>
+    </div>
+  </div>
+</fieldset>

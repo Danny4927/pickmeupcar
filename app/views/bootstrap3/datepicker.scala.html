@@ -1,0 +1,34 @@
+@(nameId: String, initValue: Field, label: String)
+@* see https://github.com/eternicode/bootstrap-datepicker *@
+@defining(initValue.value.getOrElse("")) { value =>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">@label</label>
+
+        <div class="col-sm-10 input-append date" id="@{nameId}z" data-date="@value"
+        data-date-format="dd.mm.yyyy">
+            <input class="form-control" id="@{nameId}" name="@{nameId}" type="text"
+            value="@value" readonly="false">
+            <span class="add-on"><i class="icon-calendar"></i></span>
+        </div>
+        <span class="add-on"><i class="icon-remove-circle"
+        onclick='$("#@{nameId}").val("")'></i></span>
+        <script>
+        $(function(){
+
+        $('#@{nameId}').datepicker({
+        format: "dd.mm.yyyy",
+        startDate: "today",
+        todayBtn: "linked",
+        language: "de",
+        autoclose: true,
+        todayHighlight: true
+        })
+        $('#@{nameId}').datepicker()
+        .on('changeDate', function(ev){
+            alert(Datepicker.format(ev.date, "dd.mm.yyyy"));
+        $("#@{nameId}").val(ev.date.valueOf());
+        });
+    });}
+</script>
+
+</div>

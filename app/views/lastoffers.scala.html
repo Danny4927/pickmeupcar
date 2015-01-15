@@ -1,0 +1,30 @@
+@(offers: List[views.formdata.OfferFormData])
+
+@import helper._
+
+@main("Angebote") {
+<div class="container">
+    <div class="well">
+
+        <div id="legend">
+            <legend><h2>Aktuelle Angebote</h2></legend>
+        </div>
+
+
+            @for(p <- offers) {
+        <div class="container">
+            <div class="well">
+
+                <div id="legend">
+                    <legend>@p.date @p.time Uhr</legend>
+                </div>
+              <b>Von:</b> @p.startPoint <b>Nach:</b> @p.targetPoint
+                </div>
+            </div>
+
+
+            }
+
+        </div>
+    </div>
+}

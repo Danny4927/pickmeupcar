@@ -1,0 +1,31 @@
+@(offer: Form[views.formdata.OfferFormData])
+
+@import helper._
+@import fieldsets.fieldset
+
+@main("Angebot einstellen") {
+  <div class="container">
+    <div class="well">
+
+    @form(routes.Application.postOfferForm(), 'class -> "form-horizontal") {
+      @fieldset(offer)
+    }
+    </div>
+
+    @if(flash.containsKey("success")) {
+      <div class="well">
+        <div id="success-message" class="text-success">
+        @flash.get("success")
+        </div>
+      </div>
+    }
+    @if(flash.containsKey("error")) {
+      <div class="well">
+        <div id="error-message" class="text-danger">
+        @flash.get("error")
+        </div>
+      </div>
+    }
+  </div>
+
+}

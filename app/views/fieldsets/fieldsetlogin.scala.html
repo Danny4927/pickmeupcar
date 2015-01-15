@@ -1,0 +1,30 @@
+@(login: Form[views.formdata.LoginFormData])
+
+@import bootstrap3.email
+@import bootstrap3.password
+
+<fieldset>
+    <!-- Header -->
+  <div id="legend">
+    <legend>Sign in</legend>
+  </div>
+
+    <!-- Start Point -->
+  @email(login("email"),
+    label = "Email",
+    placeholder = "mustermann@mustermail.com",
+    help = "Bitte geben sie eine Emailadresse ein")
+
+    <!-- Target Point -->
+  @password(login("password"),
+    label = "Passwort",
+    placeholder = "",
+    help = "Bitte geben sie ein Passwort ein")
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id="submit" type="submit" value="Submit" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</fieldset>

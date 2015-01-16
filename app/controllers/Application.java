@@ -123,7 +123,8 @@ public class Application extends Controller {
             session().put("connected", "true");
 //            return ok(createoffer.render(formData));
             flash("success", "Die Anmeldung  war erfolgreich");
-            return ok(index.render("Willkommen zurück "+current.getUsername()));
+            return redirect("/");
+          //  return ok(index.render("Willkommen zurück "+current.getUsername()));
         }
     }
 
@@ -138,7 +139,7 @@ public class Application extends Controller {
     public static Result logout() {
 
         session().clear();
-        return ok(index.render("Auf Wiedersehen"));
+        return redirect("/");
     }
 
     public static Result register() {

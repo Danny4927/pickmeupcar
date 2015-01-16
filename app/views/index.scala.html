@@ -8,10 +8,10 @@
                 <legend><h1>Das Pick Me Up, Car Projekt!</h1></legend>
             </div>
 
-            @if(!message.equals("")) {
+            @if(!session.isEmpty && !session.get("username").isEmpty) {
                 <div class="well">
                     <div id="success-message" class="text-success">
-                    @message
+                     Hallo @session.get("username")
                     </div>
                 </div>
 

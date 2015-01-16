@@ -58,13 +58,55 @@ public class UserFormData {
     public List<ValidationError> validate() {
 
         List<ValidationError> errors = new ArrayList<ValidationError>();
+        boolean noUsername = false;
 
-        if (email == null || email.length() == 0) {
-            errors.add(new ValidationError("email", "Keine Emailadresse eingegeben"));
+
+
+        if (vorname == null || vorname.length() == 0) {
+            errors.add(new ValidationError("vorname", "Keinen Vornamen eingegeben"));
         }
 
+        if (nachname == null || nachname.length() == 0) {
+            errors.add(new ValidationError("nachname", "Keinen Nachname eingegeben"));
+        }
+
+        if (username == null || username.length() == 0) {
+            errors.add(new ValidationError("username", "Kein Benutzername eingegeben"));
+            noUsername = true;
+        }
+        if (email == null || email.length() == 0) {
+            errors.add(new ValidationError("email", "Keine Emailadresse eingegeben"));
+        }else if (!noUsername){
+            boolean usernameTaken = false;
+            boolean emailTaken = false;
+
+            //iterating over values only
+            for (User value : User.getAllUsers().values()) {
+                if (value.getUsername().equals(username)) {
+                    usernameTaken = true;
+                }
+                if (value.getEmail().equals(email)) {
+                    emailTaken = true;
+                }
+            }
+
+            if (usernameTaken) {
+                errors.add(new ValidationError("username", "Der Benutzername wurde bereits vergeben"));
+            }
+
+            if (emailTaken) {
+                errors.add(new ValidationError("email", "Sie haben sich mit dieser Email Adresse bereits registriert"));
+            }
+
+        }
         if (password == null || password.length() == 0) {
             errors.add(new ValidationError("password", "Kein Password eingegeben"));
+        }
+        if (password == null || password.length() == 0) {
+            errors.add(new ValidationError("password", "Kein Password eingegeben"));
+        }else if (!password.equals(password2)) {
+            errors.add(new ValidationError("password", "Passwörter stimmen nicht überein"));
+            errors.add(new ValidationError("password2", "Passwörter stimmen nicht überein"));
         }
 
         if(errors.size() > 0)

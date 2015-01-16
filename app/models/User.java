@@ -113,6 +113,18 @@ public class User extends Model {
         return password;
     }
 
+    public String getVorname() {
+        return vorname;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public static HashMap<Long, User> getAllUsers() {
+        return allUsers;
+    }
+
     /**
      * Returns a User instance created from the form data.
      * Assumes that the formData has been validated.

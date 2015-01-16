@@ -14,6 +14,7 @@ GET         /assets/*file             controllers.Assets.at(path="/public", file
 GET         /login                    controllers.Application.getLoginForm(id: Long ?= 0)
 POST        /login                    controllers.Application.postLoginForm()
 
+GET         /logout                    controllers.Application.logout()
 
 GET         /angebote                 controllers.OfferController.getLastOffers()
 

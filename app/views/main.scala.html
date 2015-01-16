@@ -14,35 +14,9 @@
         href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
     </head>
     <body>
-        <div class="navbar navbar-inverse" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <!--  Display three horizontal lines when navbar collapsed. -->
-                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">pickmeupcar.de</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        @* Home page is active. *@
-                        <li class=@{if(request.path == routes.Application.getOfferForm().toString()) "active" else ""}>
-                            <a href="@routes.Application.getOfferForm()">Angebot einstellen</a>
-                        </li>
 
-                        <li class=@{if(request.path == routes.OfferController.getLastOffers().toString()) "active" else ""}>
-                            <a href="@routes.OfferController.getLastOffers()">Angebote</a>
-                        </li>
-                        <li class=@{if(request.path == routes.Application.getLoginForm().toString()) "active" else ""}>
-                            <a href="@routes.Application.getLoginForm()">Login</a>
-                        </li>
+        @menu("pickmeupcar")
 
-                    </ul>
-
-                </div>
-
-            </div>
-        </div>
         @content
 
 

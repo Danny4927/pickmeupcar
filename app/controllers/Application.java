@@ -117,10 +117,11 @@ public class Application extends Controller {
             User  current = User.getUserByEmail(formData.get().getEmail());
             session().clear();
             session().put("id", String.valueOf(current.getId()));
-//
+            session().put("username", String.valueOf(current.getUsername()));
+            session().put("connected", "true");
 //            return ok(createoffer.render(formData));
             flash("success", "Die Anmeldung  war erfolgreich");
-            return ok(index.render("Die Anmeldung  war erfolgreich"));
+            return ok(index.render("Willkommen zurück "+current.getUsername()));
         }
     }
 
@@ -132,4 +133,9 @@ public class Application extends Controller {
     }
 
 
+    public static Result logout() {
+
+        session().clear();
+        return ok(index.render("Auf Wiedersehen"));
+    }
 }

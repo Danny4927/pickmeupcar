@@ -1,0 +1,30 @@
+@(register: Form[views.formdata.UserFormData])
+
+@import helper._
+@import fieldsets.fieldsetregister
+
+@main("Register") {
+    <div class="container">
+        <div class="well">
+
+        @form(routes.Application.register(), 'class -> "form-horizontal") {
+            @fieldsetregister(register)
+        }
+        </div>
+
+        @if(flash.containsKey("success")) {
+            <div class="well">
+                <div id="success-message" class="text-success">
+                @flash.get("success")
+                </div>
+            </div>
+        }
+        @if(flash.containsKey("error")) {
+            <div class="well">
+                <div id="error-message" class="text-danger">
+                @flash.get("error")
+                </div>
+            </div>
+        }
+    </div>
+}

@@ -42,7 +42,7 @@ public class Offer extends Model {
 
     static {
         // Valid student. No optional data supplied.
-        new Offer(new User("bla", "blub","test12345678", "mail@bla.de"), "München", "Berlin", "25.11.2014", "10:00");
+        new Offer(new User("bla", "blub","blaa", "mail@bla.de","test12345678"), "München", "Berlin", "25.11.2014", "10:00");
 //        // Valid student with optional data.
 //        allOffers.add(new Offer("Alice Good", "mypassword"));
 //

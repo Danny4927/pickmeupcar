@@ -1,6 +1,7 @@
 package models;
 
 import play.db.ebean.Model;
+import views.formdata.UserFormData;
 
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -14,13 +15,15 @@ public class User extends Model {
 
     @Id
     private long id;
-    private String name;
+    private String vorname;
+    private String nachname;
     private String username;
     private String password;
+    private String email;
     private List<Offer> offers = new ArrayList<Offer>();
     private List<Car> cars = new ArrayList<Car>();
     // Mailadresse des Anwenders, muss eindeutig sein
-    private String email;
+
 
     /**
      * Fake a database of users.
@@ -29,33 +32,21 @@ public class User extends Model {
     private static long currentID = 0L;
 
     // test user
-    static User test = new User("test", "asd", "asd", "asd@asd.de" );
+    static User test = new User("bla","blub", "asd", "asd@asd.de", "asd" );
 
-    public User(String name, String username, String password, String email) {
+    public User(String vorname, String nachname, String username, String email, String password) {
         this.setId(currentID);
         currentID++;
-        this.name = name.trim();
+        this.vorname = vorname.trim();
+        this.nachname = nachname.trim();
         this.username = username.trim();
-        this.password = password;
         this.email = email.trim();
+        this.password = password;
         allUsers.put(this.getId(), this);
 
 
     }
 
-
-    /**
-     * do not use
-     *
-     * @param email
-     * @param name
-     * @param password
-     */
-    public User(String email, String name, String password) {
-        this.email = email;
-        this.name = name;
-        this.password = password;
-    }
 
     public static Finder<String,User> find = new Finder<String,User>(
             String.class, User.class
@@ -120,5 +111,19 @@ public class User extends Model {
 
     public String getPassword() {
         return password;
+    }
+
+    /**
+     * Returns a User instance created from the form data.
+     * Assumes that the formData has been validated.
+     * The ID field is not assigned or managed in this application.
+     *
+     * @param formData The user form data.
+     * @return A user instance.
+     */
+    public static User makeInstance(UserFormData formData) {
+        User user = new User(formData.getVorname(), formData.getNachname(), formData.getUsername(), formData.getEmail(), formData.getPassword());
+
+        return user;
     }
 }

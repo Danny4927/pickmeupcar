@@ -11,8 +11,10 @@ import java.util.List;
  */
 public class UserFormData {
 
-    public String name = "";
+    public String vorname = "";
+    public String nachname = "";
     public String password = "";
+    public String password2 = "";
     public String email = "";
     private String username;
 
@@ -69,5 +71,25 @@ public class UserFormData {
             return errors;
 
         return null;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

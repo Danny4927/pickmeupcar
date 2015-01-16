@@ -1,0 +1,55 @@
+@(register: Form[views.formdata.UserFormData])
+
+@import bootstrap3.email
+@import bootstrap3.password
+@import bootstrap3.text
+
+<fieldset>
+    <!-- Header -->
+  <div id="legend">
+    <legend>Register</legend>
+  </div>
+
+    <!-- Vorname -->
+  @text(register("vorname"),
+    label = "Vorname",
+    placeholder = "Max",
+    help = "Bitte geben sie eine Emailadresse ein")
+
+  <!-- Nachname -->
+  @text(register("nachname"),
+    label = "Nachname",
+    placeholder = "Mustermann",
+    help = "Bitte geben sie eine Emailadresse ein")
+
+  <!-- Benutzername -->
+  @text(register("username"),
+    label = "Benutzername",
+    placeholder = "",
+    help = "Bitte geben sie eine Emailadresse ein")
+
+    <!--Email Adresse-->
+  @email(register("email"),
+    label = "Email Adresse",
+    placeholder = "mustermann@mustermail.com",
+    help = "Bitte geben sie eine Emailadresse ein")
+
+    <!-- Passwort -->
+  @password(register("password"),
+    label = "Passwort",
+    placeholder = "",
+    help = "Bitte geben sie ein Passwort ein")
+
+    <!-- Passwort -->
+  @password(register("password2"),
+    label = "Passwort wiederholen",
+    placeholder = "",
+    help = "Bitte geben sie ein Passwort ein")
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id="submit" type="submit" value="Submit" class="btn btn-primary">Register</button>
+    </div>
+  </div>
+</fieldset>

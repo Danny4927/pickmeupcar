@@ -1,14 +1,14 @@
 @(offer: Form[views.formdata.OfferFormData])
 
 @import helper._
-@import fieldsets.fieldset
+@import fieldsets.fieldsetcreateoffer
 
 @main("Angebot einstellen") {
   <div class="container">
     <div class="well">
 
     @form(routes.Application.postOfferForm(), 'class -> "form-horizontal") {
-      @fieldset(offer)
+      @fieldsetcreateoffer(offer)
     }
     </div>
 

@@ -7,9 +7,11 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.formdata.LoginFormData;
 import views.formdata.OfferFormData;
+import views.formdata.UserFormData;
 import views.html.createoffer;
 import views.html.index;
 import views.html.login2;
+import views.html.register;
 
 import static play.data.Form.form;
 
@@ -137,5 +139,33 @@ public class Application extends Controller {
 
         session().clear();
         return ok(index.render("Auf Wiedersehen"));
+    }
+
+    public static Result register() {
+
+        // Get the submitted form data from the request object, and run validation.
+        Form<UserFormData> formData = form(UserFormData.class).bindFromRequest();
+
+        if (formData.hasErrors()) {
+            // Don't call formData.get() when there are errors, pass 'null' to helpers instead.
+            flash("error", "Bitte beheben sie zuerst alle Fehler");
+            return badRequest(register.render(formData));
+        } else {
+            // Convert the formData into a user model instance.
+            User  current = User.makeInstance(formData.get());
+
+//            return ok(createoffer.render(formData));
+            flash("success", "Registrierung war erfolgreich");
+            return ok(register.render(formData));
+        }
+
+    }
+
+    public static Result showRegistrationForm() {
+
+        UserFormData loginData = new UserFormData();
+        Form<UserFormData> formData = form(UserFormData.class).fill(loginData);
+//        return ok(createlogin.render(formData));
+        return ok(register.render(formData));
     }
 }

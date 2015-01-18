@@ -10,7 +10,7 @@ import views.formdata.OfferFormData;
 import views.formdata.UserFormData;
 import views.html.createoffer;
 import views.html.index;
-import views.html.login2;
+import views.html.login;
 import views.html.register;
 
 import static play.data.Form.form;
@@ -21,40 +21,6 @@ public class Application extends Controller {
         return ok(index.render(s));
     }
 
-    public static Result login() {
-        return ok(
-                //login2.render(form(Login.class))
-        );
-    }
-
-//    public static class Login {
-//
-//        public String email;
-//        public String password;
-//
-//        public String validate() {
-//            if (User.authenticate(email, password) == null) {
-//                return "Invalid user or password";
-//            }
-//            return null;
-//        }
-//
-//        public String getEmail() {
-//            return email;
-//        }
-//    }
-//    public static Result authenticate() {
-//        Form<Login> loginForm = form(Login.class).bindFromRequest();
-//        if (loginForm.hasErrors()) {
-//            return badRequest(login.render(loginForm));
-//        } else {
-//            session().clear();
-//            session("email", loginForm.get().email);
-//            return redirect(routes.Application.index()
-//
-//            );
-//        }
-//    }
 
     /**
      * Process a form submission.
@@ -113,7 +79,7 @@ public class Application extends Controller {
         if (formData.hasErrors()) {
             // Don't call formData.get() when there are errors, pass 'null' to helpers instead.
             flash("error", "Bitte beheben sie zuerst alle Fehler");
-            return badRequest(login2.render(formData));
+            return badRequest(login.render(formData));
         } else {
             // Convert the formData into a offer model instance.
             User  current = User.getUserByEmail(formData.get().getEmail());
@@ -121,9 +87,9 @@ public class Application extends Controller {
             session().put("id", String.valueOf(current.getId()));
             session().put("username", String.valueOf(current.getUsername()));
             session().put("connected", "true");
-//            return ok(createoffer.render(formData));
             flash("success", "Die Anmeldung  war erfolgreich");
             return redirect("/");
+
           //  return ok(index.render("Willkommen zurück "+current.getUsername()));
         }
     }
@@ -131,8 +97,8 @@ public class Application extends Controller {
     public static Result getLoginForm(long id) {
         LoginFormData loginData = new LoginFormData();
         Form<LoginFormData> formData = form(LoginFormData.class).fill(loginData);
-//        return ok(createlogin.render(formData));
-        return ok(login2.render(formData));
+
+        return ok(login.render(formData));
     }
 
 
@@ -155,7 +121,6 @@ public class Application extends Controller {
             // Convert the formData into a user model instance.
             User  current = User.makeInstance(formData.get());
 
-//            return ok(createoffer.render(formData));
             flash("success", "Registrierung war erfolgreich");
             return ok(register.render(formData));
         }
@@ -166,7 +131,7 @@ public class Application extends Controller {
 
         UserFormData loginData = new UserFormData();
         Form<UserFormData> formData = form(UserFormData.class).fill(loginData);
-//        return ok(createlogin.render(formData));
+
         return ok(register.render(formData));
     }
 }

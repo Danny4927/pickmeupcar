@@ -2,6 +2,7 @@
 
 @import bootstrap3.text
 @import bootstrap3.datepicker
+  @import bootstrap3.timepicker
 
 <fieldset>
   <!-- Header -->
@@ -28,11 +29,13 @@
   "Datum")
 
 
-    <!-- Start Time -->
-    @text(offer("time"),
-    label = "Abfahrtszeit",
-    placeholder = "z.B. 09:35",
-    help = "Bitte geben sie eine Zeit ein")
+
+    <!-- Start date -->
+  @timepicker("tpoffer",
+    offer("time"),
+    "Abfahrtszeit")
+
+
 
 
   <div class="form-group">

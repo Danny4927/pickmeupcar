@@ -1,0 +1,28 @@
+@(nameId: String, initValue: Field, label: String)
+@* see https://tarruda.github.io/bootstrap-datetimepicker/ *@
+@defining(initValue.value.getOrElse("")) { value =>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">@label</label>
+
+
+    <div id="datetimepicker3" class="col-sm-3 input-append">
+      <input data-format="hh:mm:ss" type="text" class="form-control">
+      </input>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+        </i>
+      </span>
+
+    </div>
+    <script type="text/javascript">
+    $ ( function ( ) {
+    $ ( '#datetimepicker3' ).datetimepicker ( {
+    pickDate : false,
+    pickSeconds: false,
+    language: 'de'
+    } ) ;
+    } ) ;
+    </script>
+
+  </div>
+}

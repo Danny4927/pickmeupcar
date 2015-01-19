@@ -1,6 +1,5 @@
 package views.formdata;
 
-import models.User;
 import play.data.validation.ValidationError;
 
 import java.util.ArrayList;
@@ -9,25 +8,22 @@ import java.util.List;
 /**
  * Created by Danny on 29.09.2014.
  */
-public class OfferFormData {
+public class SearchOfferFormData {
 
-    public long userID;
     public String startPoint = "";
     public String targetPoint = "";
     public String date = "";
-    public String time = "";
+
 
 
     /** Required for form instantiation. */
-    public OfferFormData() {
+    public SearchOfferFormData() {
     }
 
-    public OfferFormData(User user, String startPoint, String targetPoint, String date, String time) {
-        this.userID = user.getId();
+    public SearchOfferFormData(String startPoint, String targetPoint, String date, String time) {
         this.startPoint = startPoint;
         this.targetPoint = targetPoint;
         this.date = date;
-        this.time = time;
     }
 
     /**
@@ -56,7 +52,7 @@ public class OfferFormData {
 
         if (targetPoint == null || targetPoint.length() == 0) {
             errors.add(new ValidationError("targetPoint", "Kein gültiges Ziel angegeben."));
-        }
+
 
 
 //        // Datum validieren
@@ -65,9 +61,6 @@ public class OfferFormData {
 //
 //        }
 
-        // Grade Level is required and must exist in database.
-        if (time == null || time.length() == 0) {
-            errors.add(new ValidationError("time", "Keine gültige Abfahrtszeit angegeben."));
 
         }
 
@@ -75,14 +68,6 @@ public class OfferFormData {
             return errors;
 
         return null;
-    }
-
-    public long getUserID() {
-        return userID;
-    }
-
-    public void setUserID(long userID) {
-        this.userID = userID;
     }
 
     public String getStartPoint() {
@@ -109,11 +94,4 @@ public class OfferFormData {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

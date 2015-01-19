@@ -1,0 +1,36 @@
+@(offer: Form[views.formdata.SearchOfferFormData])
+
+@import bootstrap3.text
+@import bootstrap3.datepicker
+
+<fieldset>
+  <!-- Header -->
+  <div id="legend">
+    <legend>Nach Angeboten suchen</legend>
+  </div>
+
+   <!-- Start Point -->
+  @text(offer("startPoint"),
+        label = "Von",
+        placeholder = "z.B. Karlsruhe",
+        help = "Bitte geben sie einen Startpunkt ein")
+
+    <!-- Target Point -->
+    @text(offer("targetPoint"),
+    label = "Nach",
+    placeholder = "z.B. Berlin",
+    help = "Bitte geben sie ein Ziel ein")
+
+        <!-- Start date -->
+    @datepicker("dpoffer",
+        offer("date"),
+        "Datum")
+
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button id="submit" type="submit" value="Submit" class="btn btn-primary">Suchen</button>
+    </div>
+  </div>
+</fieldset>

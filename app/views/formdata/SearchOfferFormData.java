@@ -55,11 +55,11 @@ public class SearchOfferFormData {
 
 
 
-//        // Datum validieren
-//        if (date == null || date.length() == 0) {
-//            errors.add(new ValidationError("date", "Kein gültiges Datum angegeben."));
-//
-//        }
+        // Datum validieren
+        if (date == null || date.length() == 0) {
+            errors.add(new ValidationError("date", "Kein gültiges Datum angegeben."));
+
+        }
 
 
         }

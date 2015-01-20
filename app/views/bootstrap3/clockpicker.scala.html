@@ -8,8 +8,9 @@
       <input type="text"
       class="form-control"
       id="@field.id"
+      name="@field.name"
       value="@field.value.getOrElse("")"
-      placeholder="@placeholder" />
+      placeholder="@placeholder"/>
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-time">
 
@@ -26,11 +27,11 @@
 <script type='text/javascript' src='@routes.Assets.at("javascripts/bootstrap-clockpicker.min.js")'></script>
 
 <script type="text/javascript">
-$('.clockpicker').clockpicker()
-.find('input').change(function(){
-// TODO: time changed
 
-console.log(this.value);
+$('.clockpicker').clockpicker().find('input').change(function(){
+  document.getElementById("@field.name").value = this.value;
+  console.log(this.value);
+
 });
 
 </script>

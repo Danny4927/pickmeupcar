@@ -22,8 +22,8 @@ public class OfferFormData {
     public OfferFormData() {
     }
 
-    public OfferFormData(User user, String startPoint, String targetPoint, String date, String time) {
-        this.userID = user.getId();
+    public OfferFormData(long userID, String startPoint, String targetPoint, String date, String time) {
+        this.userID = userID;
         this.startPoint = startPoint;
         this.targetPoint = targetPoint;
         this.date = date;
@@ -78,6 +78,12 @@ public class OfferFormData {
 
     public long getUserID() {
         return userID;
+    }
+
+    public String getUserName()
+    {
+
+        return User.getUserById(getUserID()).getUsername();
     }
 
     public void setUserID(long userID) {

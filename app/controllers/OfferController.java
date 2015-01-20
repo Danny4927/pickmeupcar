@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Offer;
+import models.User;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -83,7 +84,11 @@ public class OfferController extends Controller {
         else {
             // Convert the formData into a offer model instance.
             Offer offer = Offer.makeInstance(formData.get());
-            flash("success", "Ihr Angebot von " + offer.getStartPoint() + " nach " + offer.getTargetPoint() + " wurde gespeichert");
+            User currentuser = User.getUserById(Long.parseLong(session().get("id")));
+            if (currentuser != null) {
+                offer.setUser(currentuser);
+            }
+            flash("success", "Ihr Angebot von " + offer.getStartPoint() + " nach " + offer.getTargetPoint() + " wurde gespeichert" );
             return ok(createoffer.render(formData));
         }
     }

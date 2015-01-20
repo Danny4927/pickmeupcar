@@ -13,10 +13,13 @@
       <ul class="nav navbar-nav">
 
           @* Home page is active. *@
-          <li class=@{if(request.path == routes.OfferController.getOfferForm().toString()) "active" else ""}>
-              <a href="@routes.OfferController.getOfferForm()">Angebot einstellen</a>
-          </li>
-
+          @if(!session.isEmpty && !session.get("connected").isEmpty) {
+              <li class=@{
+                  if(request.path == routes.OfferController.getOfferForm().toString()) "active" else ""
+              }>
+                  <a href="@routes.OfferController.getOfferForm()">Angebot einstellen</a>
+              </li>
+          }
           <li class=@{if(request.path == routes.OfferController.getLastOffers().toString()) "active" else ""}>
               <a href="@routes.OfferController.getLastOffers()">Angebote</a>
           </li>

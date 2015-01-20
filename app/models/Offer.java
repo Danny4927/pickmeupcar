@@ -129,7 +129,7 @@ public class Offer extends Model {
      */
     public OfferFormData getOfferFormData() {
 
-        return new OfferFormData(this.getUser(), this.getStartPoint(), this.getTargetPoint(), this.getDate(), this.getTime());
+        return new OfferFormData(this.getUser().getId(), this.getStartPoint(), this.getTargetPoint(), this.getDate(), this.getTime());
     }
 
     public static List<Offer> getAllOffers() {

@@ -1,17 +1,17 @@
 @(field: Field, label: String= "CHANGEME", placeholder: String = "", help: String = "",nameId: String)
 @* see https://github.com/eternicode/bootstrap-datepicker *@
-@defining(field.value.getOrElse("9.2.2015")) { value =>
+
 <div class="form-group @if(field.hasErrors) {has-error}">
     <label class="col-sm-2 control-label">@label</label>
 
-    <div class="col-sm-3 input-append date" id="@{nameId}z" data-date="@value" data-date-format="dd.mm.yyyy">
+    <div class="col-sm-3 input-append date" id="@{nameId}z" data-date="@field.value" data-date-format="dd.mm.yyyy">
         <div class="input-group">
         <input
             class="form-control"
-            id="@{nameId}"
-            name="@{nameId}"
+            id="@field.name"
+            name="@field.id"
             type="text"
-            value="@value"
+            value="@field.value.getOrElse("")"
             placeholder="@placeholder"
             readonly="false" />
         <span class="input-group-addon">
@@ -21,11 +21,11 @@
         <span class="help-block">@help</span>
         <span class="help-block">@{field.error.map { error => error.message }}</span>
     </div>
-    <span class="add-on"><i class="icon-remove-circle" onclick='$("#@{nameId}").val("")'></i></span>
+    <span class="add-on"><i class="icon-remove-circle" onclick='$("#@field.name").val("")'></i></span>
 
     <script>
       $(function(){
-        $('#@{nameId}').datepicker({
+        $('#@field.name').datepicker({
             format: "dd.mm.yyyy",
             startDate: "today",
             todayBtn: "linked",
@@ -34,14 +34,14 @@
             todayHighlight: true
         })
 
-        $('#@{nameId}').datepicker()
+        $('.datepicker').datepicker()
         .on('changeDate', function(ev){
          //   alert($("#@{nameId}").format(ev.date, "dd.mm.yyyy"));
-            $("#@{nameId}").val(ev.date.valueOf());
+            //$("#@{nameId}").val(ev.date.valueOf());
+
         });
     });
     </script>
 
 </div>
 
-}

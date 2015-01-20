@@ -65,11 +65,10 @@ public class OfferFormData {
 //
 //        }
 
-        // Grade Level is required and must exist in database.
-        if (time == null || time.length() == 0) {
-            errors.add(new ValidationError("time", "Keine gültige Abfahrtszeit angegeben."));
-
-        }
+        // time validation
+//        if (time == null || time.length() == 0) {
+//            errors.add(new ValidationError("time", "Keine gültige Abfahrtszeit angegeben."));
+//        }
 
         if(errors.size() > 0)
             return errors;

@@ -22,10 +22,12 @@
     help = "Bitte geben sie ein Ziel ein")
 
         <!-- Start date -->
-    @datepicker("dpoffer",
-        offer("date"),
-        "Datum")
-
+    @datepicker(offer("date"),
+        label = "Datum",
+        placeholder = "20.03.2015",
+        help="Bitte geben sie ein Datum an",
+        "dpoffer"
+    )
 
 
   <div class="form-group">

@@ -13,8 +13,8 @@
       <ul class="nav navbar-nav">
 
           @* Home page is active. *@
-          <li class=@{if(request.path == routes.Application.getOfferForm().toString()) "active" else ""}>
-              <a href="@routes.Application.getOfferForm()">Angebot einstellen</a>
+          <li class=@{if(request.path == routes.OfferController.getOfferForm().toString()) "active" else ""}>
+              <a href="@routes.OfferController.getOfferForm()">Angebot einstellen</a>
           </li>
 
           <li class=@{if(request.path == routes.OfferController.getLastOffers().toString()) "active" else ""}>
@@ -22,13 +22,13 @@
           </li>
 
           @if(session.isEmpty){
-              <li class=@{if(request.path == routes.Application.getLoginForm().toString()) "active" else ""}>
-                  <a href="@routes.Application.getLoginForm()">Login</a>
+              <li class=@{if(request.path == routes.Authentication.getLoginForm().toString()) "active" else ""}>
+                  <a href="@routes.Authentication.getLoginForm()">Login</a>
               </li>
           }
           @if(!session.isEmpty && !session.get("connected").isEmpty){
-              <li class=@{if(request.path == routes.Application.logout().toString()) "active" else ""}>
-                  <a href="@routes.Application.logout()">Logout</a>
+              <li class=@{if(request.path == routes.Authentication.logout().toString()) "active" else ""}>
+                  <a href="@routes.Authentication.logout()">Logout</a>
               </li>
           }
 

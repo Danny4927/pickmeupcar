@@ -10,20 +10,20 @@ POST        /                         controllers.Application.index(s: String ?=
 GET         /assets/*file             controllers.Assets.at(path="/public", file)
 
 
-GET         /register                 controllers.Application.showRegistrationForm()
-POST        /register                 controllers.Application.register()
+GET         /register                 controllers.Authentication.showRegistrationForm()
+POST        /register                 controllers.Authentication.register()
 #GET         /login                controllers.Application.login()
 #POST        /login                controllers.Application.authenticate()
-GET         /login                    controllers.Application.getLoginForm(id: Long ?= 0)
-POST        /login                    controllers.Application.postLoginForm()
+GET         /login                    controllers.Authentication.getLoginForm(id: Long ?= 0)
+POST        /login                    controllers.Authentication.postLoginForm()
 
-GET         /logout                   controllers.Application.logout()
+GET         /logout                   controllers.Authentication.logout()
 
 GET         /angebote                 controllers.OfferController.getLastOffers()
 POST         /angebote                 controllers.OfferController.postSearchRasults()
 
-GET         /angeboteinstellen        controllers.Application.getOfferForm(id: Long ?= 0)
-POST        /angeboteinstellen        controllers.Application.postOfferForm()
+GET         /angeboteinstellen        controllers.OfferController.getOfferForm(id: Long ?= 0)
+POST        /angeboteinstellen        controllers.OfferController.postOfferForm()
 
 
 # Map static resources from the /public folder to the /assets URL path

@@ -59,16 +59,16 @@ public class OfferFormData {
         }
 
 
-//        // Datum validieren
-//        if (date == null || date.length() == 0) {
-//            errors.add(new ValidationError("date", "Kein gültiges Datum angegeben."));
-//
-//        }
+        // Datum validieren
+        if (date == null || date.length() == 0) {
+            errors.add(new ValidationError("date", "Kein gültiges Datum angegeben."));
 
-        // time validation
-//        if (time == null || time.length() == 0) {
-//            errors.add(new ValidationError("time", "Keine gültige Abfahrtszeit angegeben."));
-//        }
+        }
+
+        //time validation
+        if (time == null || time.length() == 0) {
+            errors.add(new ValidationError("time", "Keine gültige Abfahrtszeit angegeben."));
+        }
 
         if(errors.size() > 0)
             return errors;

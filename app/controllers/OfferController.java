@@ -8,6 +8,8 @@ import views.formdata.OfferFormData;
 import views.formdata.SearchOfferFormData;
 import views.html.createoffer;
 import views.html.lastoffers;
+import views.html.searchOffers;
+import views.html.searchresults;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,19 +45,20 @@ public class OfferController extends Controller {
         Form<SearchOfferFormData> formData = form(SearchOfferFormData.class).bindFromRequest();
         if (formData.hasErrors()) {
             List<OfferFormData> offers = new ArrayList<>();
-            for (Offer offer : Offer.getAllOffers()) {
-                offers.add(offer.getOfferFormData());
-            }
 
             // Don't call formData.get() when there are errors, pass 'null' to helpers instead.
             flash("error", "Bitte beheben sie zuerst alle Fehler");
-            return badRequest(lastoffers.render(offers, formData));
+            return badRequest(searchOffers.render(formData));
         } else {
             List<OfferFormData> offers = new ArrayList<>();
             for (Offer offer : Offer.getAllOffers()) {
-                offers.add(offer.getOfferFormData());
+                if (offer.getDate().equals(formData.get().getDate()) &&
+                    offer.getStartPoint().equals(formData.get().getStartPoint()) &&
+                    offer.getTargetPoint().equals(formData.get().getTargetPoint())){
+                        offers.add(offer.getOfferFormData());
+                }
             }
-            return ok(lastoffers.render(offers, formData));
+            return ok(searchresults.render(offers,formData));
         }
     }
 

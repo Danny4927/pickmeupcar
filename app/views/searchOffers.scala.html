@@ -1,0 +1,25 @@
+@(offer: Form[views.formdata.SearchOfferFormData])
+
+@import helper._
+@import fieldsets.fieldsetsearchoffer
+
+<div class="container">
+    <div class="well">
+
+        @form(routes.OfferController.postSearchRasults(), 'class -> "form-horizontal") {
+        @fieldsetsearchoffer(offer)
+
+        }
+    </div>
+
+    @if(flash.containsKey("success")) {
+
+    }
+    @if(flash.containsKey("error")) {
+    <div class="well">
+        <div id="error-message" class="text-danger">
+            @flash.get("error")
+        </div>
+    </div>
+    }
+</div>

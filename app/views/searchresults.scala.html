@@ -1,0 +1,32 @@
+@(offers: List[views.formdata.OfferFormData])(offer: Form[views.formdata.SearchOfferFormData])
+@import com.sun.demo.jvmti.hprof.Tracker
+
+
+@main("Angebote") {
+  <div class="container">
+    <div class="well">
+
+      @searchOffers(offer)
+
+      <div id="legend">
+        <legend><h2>Gefundene Angebote</h2></legend>
+      </div>
+
+
+      @for(p <- offers) {
+        <div class="container">
+          <div class="well">
+
+            <div id="legend">
+              <legend>@p.date @p.time Uhr</legend>
+            </div>
+            <b>Von:</b> @p.startPoint <b>Nach:</b> @p.targetPoint
+          </div>
+        </div>
+
+
+      }
+
+    </div>
+  </div>
+}

@@ -1,35 +1,12 @@
 @(offers: List[views.formdata.OfferFormData])(offer: Form[views.formdata.SearchOfferFormData])
+@import com.sun.demo.jvmti.hprof.Tracker
 
-@import helper._
-@import fieldsets.fieldsetsearchoffer
 
 @main("Angebote") {
 <div class="container">
     <div class="well">
 
-        <div class="container">
-            <div class="well">
-
-            @form(routes.OfferController.postSearchRasults(), 'class -> "form-horizontal") {
-                @fieldsetsearchoffer(offer)
-            }
-            </div>
-
-            @if(flash.containsKey("success")) {
-                <div class="well">
-                    <div id="success-message" class="text-success">
-                    @flash.get("success")
-                    </div>
-                </div>
-            }
-            @if(flash.containsKey("error")) {
-                <div class="well">
-                    <div id="error-message" class="text-danger">
-                    @flash.get("error")
-                    </div>
-                </div>
-            }
-        </div>
+        @searchOffers(offer)
 
         <div id="legend">
             <legend><h2>Aktuelle Angebote</h2></legend>

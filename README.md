@@ -1,6 +1,6 @@
 ## pickmeupcar
 
-pickmeupcar ist eine prototypische Implementierung einer Plattform für Mitfahrgelegenheiten mithilfe des Play-Frameworks.
+pickmeupcar ist eine prototypische Implementierung einer Plattform für Mitfahrgelegenheiten mithilfe des Play-Frameworks [Play-Frameworks](https://www.playframework.com/ "Play Framework Website").
 Eine lauffähige Version ist auf
 
 http://pickmeupcar.de:9000/

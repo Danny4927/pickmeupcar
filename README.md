@@ -6,7 +6,14 @@ Eine lauffähige Version ist auf
 http://pickmeupcar.de:9000/
 
 gehostet.
-Folgende Funktionen wurden implementiert:
+Folgende Funktionen wurden bereits implementiert:
+
+* Registrierung
+* Login
+* Angebot einstellen
+* Angebote anschauen
+* Angebote suchen
+
 
 
 

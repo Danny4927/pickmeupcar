@@ -3,8 +3,11 @@
 @import helper._
 @import fieldsets.fieldsetsearchoffer
 
-<div class="container">
-    <div class="well">
+    <div class="row">
+        <div class="col-sm-6 col-md-offset-3">
+            <div id="legend">
+                <legend><h2>Angebote suchen</h2></legend>
+            </div>
 
         @form(routes.OfferController.postSearchRasults(), 'class -> "form-horizontal") {
         @fieldsetsearchoffer(offer)

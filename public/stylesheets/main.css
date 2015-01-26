@@ -1,0 +1,14 @@
+body {
+    padding-top: 50px;
+}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+@gray-darker:  lighten(#000, 13.5%);
+@gray-dark:    lighten(#000, 20%);
+@gray:         lighten(#000, 33.5%);
+@gray-light:   lighten(#000, 46.7%);
+@gray-lighter: lighten(#000, 93.5%);
+
+

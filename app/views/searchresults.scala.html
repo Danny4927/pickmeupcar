@@ -3,30 +3,34 @@
 
 
 @main("Angebote") {
-  <div class="container">
+  <div class="container-fluid">
     <div class="well">
 
       @searchOffers(offer)
 
+      <div class="row">
+        <div class="col-sm-6 col-md-offset-3">
       <div id="legend">
         <legend><h2>Gefundene Angebote</h2></legend>
       </div>
 
 
-      @for(p <- offers) {
-        <div class="container">
-          <div class="well">
+          @for(p <- offers) {
 
-            <div id="legend">
-              <legend>@p.date @p.time Uhr - @p.getUserName</legend>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title">@p.date @p.time Uhr - @p.getUserName</h3>
+              </div>
+              <div class="panel-body">
+                <b>Von:</b> @p.startPoint <b>Nach:</b> @p.getTargetPoint
+
+
+              </div>
             </div>
-            <b>Von:</b> @p.startPoint <b>Nach:</b> @p.targetPoint
-          </div>
-        </div>
+          }
 
-
-      }
-
+    </div>
+  </div>
     </div>
   </div>
 }

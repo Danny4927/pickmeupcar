@@ -46,10 +46,13 @@ public class OfferController extends Controller {
         Form<SearchOfferFormData> formData = form(SearchOfferFormData.class).bindFromRequest();
         if (formData.hasErrors()) {
             List<OfferFormData> offers = new ArrayList<>();
+            for (Offer offer: Offer.getAllOffers()){
+                offers.add(offer.getOfferFormData());
+            }
 
             // Don't call formData.get() when there are errors, pass 'null' to helpers instead.
             flash("error", "Bitte beheben sie zuerst alle Fehler");
-            return badRequest(searchOffers.render(formData));
+            return badRequest(lastoffers.render(offers, formData));
         } else {
             List<OfferFormData> offers = new ArrayList<>();
             for (Offer offer : Offer.getAllOffers()) {

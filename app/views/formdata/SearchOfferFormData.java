@@ -53,7 +53,7 @@ public class SearchOfferFormData {
         if (targetPoint == null || targetPoint.length() == 0) {
             errors.add(new ValidationError("targetPoint", "Kein gültiges Ziel angegeben."));
 
-
+        }
 
         // Datum validieren
         if (date == null || date.length() == 0) {
@@ -62,7 +62,7 @@ public class SearchOfferFormData {
         }
 
 
-        }
+
 
         if(errors.size() > 0)
             return errors;

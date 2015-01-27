@@ -19,7 +19,7 @@ POST        /login                    controllers.Authentication.postLoginForm()
 
 GET         /logout                   controllers.Authentication.logout()
 
-GET         /angebote                 controllers.OfferController.getLastOffers()
+GET          /angebote                 controllers.OfferController.getLastOffers()
 POST         /angebote                 controllers.OfferController.postSearchRasults()
 
 GET         /angeboteinstellen        controllers.OfferController.getOfferForm(id: Long ?= 0)
